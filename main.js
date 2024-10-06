@@ -19,3 +19,21 @@ closebtn.addEventListener('click', () => {
     closebtn.style.display = "none";
     menubtn.style.display = "inline-block";
 })
+
+//contact form
+var form = document.getElementById('form');
+let name, email, number, text;
+
+form.addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    name = document.getElementById('name');
+    email = document.getElementById('email');
+    number = document.getElementById('number');
+    text = document.getElementsByClassName('text');
+
+    console.log(name);
+    console.log(email);
+    console.log(number);
+    console.log(text);
+})

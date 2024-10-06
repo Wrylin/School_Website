@@ -1,0 +1,132 @@
+/* ======== header ======== */
+.header {
+    width: 100%;
+    height: 40vh;
+}
+
+.banner {
+    background: url(../img/sisc_bg2.jpg);
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: fixed;
+}
+
+.banner:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: .3;
+    z-index: -1;
+}
+
+.banner_title {
+    padding-top: 11.5rem;
+    text-align: center;
+}
+
+.banner_title h1 {
+    font-size: 6rem;
+}
+
+/* ======== icons ======== */
+.icons_container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    gap: 2rem;
+    padding-bottom: 3rem;
+}
+
+.icons{
+    text-align: center;
+    padding: 3rem 2rem;
+    /* border: 0.1rem solid var(--color-bg); */
+    background: var(--color-bg2);
+    border-radius: 0.5rem;
+}
+
+.icons:hover {
+    box-shadow: 0 3rem 3rem rgba(0,0,0,0.3);
+    transition: var(--transition);
+    transform: scale(1.05);
+}
+
+.icons i{
+    height: 4rem;
+    width: 4rem;
+    line-height: 4rem;
+    font-size: 2rem;
+    border-radius: 50%;
+    margin-bottom: 0.5rem;
+    color: white;
+    background: var(--color-primary);
+}
+
+.icons h3{
+    font-size: 2rem;
+    text-transform: capitalize;
+    color: #eca416;
+    padding: 0.5rem 0;
+    text-shadow: -1px 1px 0 #2222,
+    1px 1px 0 #2222,
+    1px -1px 0 #2222,
+    -1px -1px 0 #2222;
+}
+
+.icons p{
+    font-size: 0.9rem;
+    line-height: 2;
+}
+
+/* ======== contact form ======== */
+.contact {
+    background: var(--color-primary);
+    position: relative;
+}
+
+.contactform {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.image {
+    flex: 1 1 40rem;
+}
+
+.image img {
+    width: 100%;
+}
+
+form {
+    flex: 1 1 40rem;
+    padding: 2rem;
+    background: var(--color-bg2);
+    border-radius: 0.5rem;
+}
+
+.form h3 {
+    font-size: 2.5rem;
+    text-transform: capitalize;
+    color: black;
+    padding-bottom: 2rem;
+}
+  
+form .box {
+    width: 100%;
+    padding: 1.2rem 1.4rem;
+    border: 0.1rem solid var(--color-bg);
+    font-size: 1.6rem;
+    margin: 0.7rem 0;
+}
+form textarea {
+    height: 13rem;
+    resize: none;
+}

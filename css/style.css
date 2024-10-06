@@ -43,11 +43,14 @@ body {
     animation: appear linear;
     animation-timeline: view();
     animation-range: entry 0 cover 40%;
+    /* scroll-snap-type: y mandatory;
+    overflow-y: scroll;
+    scrollbar-width: none; */
 }
 
 @keyframes appear {
     from{
-        scale: .95;
+        scale: .9;
     }
     to {
         scale: 1;
@@ -56,6 +59,7 @@ body {
 
 section {
     padding: 5rem 0;
+    scroll-snap-align: start;
 }
 
 section h2 {
@@ -207,9 +211,7 @@ nav button {
 /* ======== end of banner ======== */
 
 /* ======== academics ======== */
-/* .stories {
-    background: var(--color-bg1);
-} */
+
 
 .academics h1{
     line-height: 1;
@@ -257,6 +259,8 @@ nav button {
 .program:hover {
     box-shadow: 0 3rem 3rem rgba(0,0,0,0.3);
     z-index: 1;
+    transform: scale(1.05);
+    transition: var(--transition);
 }
 
 .program h4 {
@@ -290,6 +294,8 @@ nav button {
 .story:hover {
     background: transparent;
     border-color: var(--color-bg2);
+    transform: scale(1.05);
+    transition: var(--transition);
 }
 
 .story_info {
@@ -333,6 +339,7 @@ footer {
     background: #2222;
     padding-top: 4rem;
     font-size: 0.9rem;
+    bottom: 0;
 }
 
 footer ul li {
