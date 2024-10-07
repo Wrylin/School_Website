@@ -118,7 +118,6 @@ img {
     border-color: var(--color-white);
 }
 
-
 /* ======== nav bar ======== */
 
 nav {
@@ -171,6 +170,7 @@ nav button {
     width: 100%;
     margin: 0 auto;
     overflow: hidden;
+    background: var(--color-black);
 }
 
 .slider {
@@ -179,34 +179,42 @@ nav button {
     scroll-behavior: smooth;
     box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
     border-radius: 0.5rem;
-    animation: slide 16s infinite;
+    animation: slide 60s infinite;
 }
 
-@keyframes slide{
-    0%{
-        transform: translateX(0);
+@keyframes slide {
+    0% {
+      transform: translateX(0px)
     }
-    25%{
-        transform: translateX(0);
+    14% {
+      transform: translateX(-100%)
     }
-    50%{
-        transform: translateX(-100%);
+    28% {
+      transform: translateX(-200%)
     }
-    75%{
-        transform: translateX(-100%);
+    42% {
+      transform: translateX(-300%)
     }
-    85%{
-        transform: translateX(-200%);
+    57% {
+      transform: translateX(-400%)
     }
-    100%{
-        transform: translateX(-200%);
+    71% {
+      transform: translateX(-500%)
+    }
+    85% {
+        transform: translateX(0px)
+    }
+    100% {
+        transform: translateX(0px)
     }
 }
 
 .slider img {
     flex: 1 0 100%;
     object-fit: cover;
+    opacity: .95;
 }
+
 
 /* ======== end of banner ======== */
 
@@ -375,9 +383,16 @@ footer ul li a:hover{
 
 .footer_socials {
     display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
+    gap: 1.2rem;
+    margin-top: 1.2rem;
+    font-size: 1.5rem;
 }
+
+.footer_socials i:hover {
+    transition: var(--transition);
+    transform: scale(1.1);
+}
+
 
 .footer_copyright {
     margin-top: 1rem;

@@ -22,18 +22,20 @@ closebtn.addEventListener('click', () => {
 
 //contact form
 var form = document.getElementById('form');
-let name, email, number, text;
 
-form.addEventListener('submit', function(event) {
-    event.preventDefault();
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-    name = document.getElementById('name');
-    email = document.getElementById('email');
-    number = document.getElementById('number');
-    text = document.getElementsByClassName('text');
+    let name, email, number, text;
 
+    name = document.getElementById('name').value;
+    email = document.getElementById('email').value;
+    number = document.getElementById('number').value;
+    text = document.getElementById('text').value;
     console.log(name);
     console.log(email);
     console.log(number);
     console.log(text);
+
+    form.reset();
 })

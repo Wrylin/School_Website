@@ -1,3 +1,4 @@
+/* ======== header ======== */
 .header {
     width: 100%;
     height: 40vh;
@@ -34,6 +35,7 @@
     font-size: 6rem;
 }
 
+/* ======== courses ======== */
 .courses_container {
     padding-top: 0.5rem;
     display: grid;

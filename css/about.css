@@ -1,8 +1,17 @@
 .window-scroll {
     box-shadow: 0 1rem 2rem rgba(0,0,0,0.3);
-    background: #e8c0ff;
+    background: var(--color-primary);
     transition: var(--transition);
 }
+
+.window-scroll a {
+    color: var(--color-white);
+}
+
+.window-scroll a:hover {
+    color: #eca416;
+}
+
 
 .wrapper {
     padding-top: 9%;
@@ -103,8 +112,9 @@ footer {
 /* ======== end of about ======== */
 
 @media screen and (max-width: 1024px) {
-    .nav_menu li a {
-        background: #e8c0ff;
-        color: var(--color-primary);
+
+    nav button {
+        color: var(--color-white);
     }
+    
 }
