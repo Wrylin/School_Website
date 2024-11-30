@@ -130,16 +130,13 @@ footer {
     grid-template-columns: 40% 60%;
 }
 
-.review_right {
-    align-items: center;
+.card:hover {
+    transform: scale(1.02);
+    transition: var(--transition);
 }
 
 .review_right button {
     margin-top: 1rem;
-}
-
-.review_right li:nth-child(3) ~ li {
-    display: none;
 }
 
 #cardContainer {
@@ -153,9 +150,10 @@ footer {
     border-radius: 8px;
     background: var(--color-bg2);
     padding: 16px;
-    width: 50rem;
+    width: 100%;
     word-break: break-all;
     box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.1);
+    transition: var(--transition);
 }
 
 input[type=text], textarea {
