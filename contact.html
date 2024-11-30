@@ -72,13 +72,13 @@
 
         <div class="container form_container">
             <div class="contactform">
-                <form action="" id="form">
+                <form method="POST" id="msgform">
                     <h3>Send us a message!</h3>
-                    <input type="name" id="name" placeholder="Name" class="box" required>
-                    <input type="email" id="email" placeholder="Email" class="box" required>
-                    <input type="text" id="number" placeholder="Phone" class="box" required>
-                    <textarea name="" id="text" class="box" placeholder="Message" cols="30" rows="10" required></textarea>
-                    <input type="submit" value="Send Message" class="btn">
+                    <input type="text" id="mname" name="name" placeholder="Name" class="box" >
+                    <input type="text" id="memail" name="email" placeholder="Email" class="box" >
+                    <input type="text" id="mnumber" name="number" placeholder="Phone" class="box">
+                    <textarea id="mtext" name="text" class="box" placeholder="Message" cols="30" rows="10" ></textarea>
+                    <button type="button" onclick="insertmsg()" class="btn">Send</button>
                 </form>
     
                 <div class="image">
@@ -126,7 +126,38 @@
             <small>Copyright &copy; Romero & SISC</small>
         </div>
     </footer>
+    <script>
+        // function load(){
+        //     $.ajax({
+        //         url: 'insert-msg.php',
+        //         method: 'POST',
+        //         dataType: 'json'
+        //     });
+        // }
 
+        // // Send the request
+        // load();
+
+        function insertmsg(){
+            const contact_name = document.getElementById("mname").value;
+            const contact_email = document.getElementById("memail").value;
+            const contact_no = document.getElementById("mnumber").value;
+            const contact_msg = document.getElementById("mtext").value;
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'insert-msg.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function () {
+                if (this.status == 200) {
+                    alert("Data is inserted successfully!");
+                    document.getElementById("msgform").reset();
+                    //load();
+                }
+            };
+            xhr.send(`mname=${contact_name}&memail=${contact_email}&mnumber=${contact_no}&mtext=${contact_msg}`);
+        } 
+    </script>
     <script src="main.js"></script>
 </body>
 </html>

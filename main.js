@@ -20,22 +20,22 @@ closebtn.addEventListener('click', () => {
     menubtn.style.display = "inline-block";
 })
 
-//contact form
-var form = document.getElementById('form');
+// //contact form
+// var form = document.getElementById('form');
 
-form.addEventListener('submit', (e) => {
-    e.preventDefault();
+// form.addEventListener('submit', (e) => {
+//     e.preventDefault();
 
-    let name, email, number, text;
+//     let name, email, number, text;
 
-    name = document.getElementById('name').value;
-    email = document.getElementById('email').value;
-    number = document.getElementById('number').value;
-    text = document.getElementById('text').value;
-    console.log(name);
-    console.log(email);
-    console.log(number);
-    console.log(text);
+//     name = document.getElementById('name').value;
+//     email = document.getElementById('email').value;
+//     number = document.getElementById('number').value;
+//     text = document.getElementById('text').value;
+//     console.log(name);
+//     console.log(email);
+//     console.log(number);
+//     console.log(text);
 
-    form.reset();
-})
+//     form.reset();
+// })

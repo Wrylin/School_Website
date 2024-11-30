@@ -63,8 +63,26 @@
                 </p>
             </div>
         </section>
+
+        <section class="review">
+            <div class="container review_container">
+                <div class="review_left">
+                    <h3>Leave a review!</h3>
+                    <form method="POST" id="reviewForm">
+                    Name:<input type="text" name="rname" id="rname"><br>
+                    Email: <input type="text" name="remail" id="remail"><br>
+                    Review: <br><textarea name="rtext" id="rtext" class="box" cols="50" rows="8"></textarea><br>
+                    <button type="button" onclick="insertreview()" class="btn">Post Review</button>
+                    </form>
+                </div>
+                <div class="review_right">
+                    <div id="cardContainer"></div>
+                    <center><button id="loadbtn" class="btn">Load More</button></center>
+                </div>
+            </div>
+        </section>
     </div>
-    
+
     <!-- footer -->
     <footer>
         <div class="container footer_container">
@@ -93,7 +111,7 @@
                     <li><a href="https://www.facebook.com/sisc.monarchs"><i class="fa-brands fa-facebook"></i></a></li>
                     <li><a href="https://www.instagram.com/southville_is/"><i class="fa-brands fa-instagram"></i></i></a></li>
                     <li><a href="https://www.tiktok.com/@southville_monarchs"><i class="fa-brands fa-tiktok"></i></i></a></li>
-                    <li><a href="https://www.youtube.com/@SOUTHVILLEMONARCHS"><i class="fa-brands fa-youtube"></i></i></a></li>\
+                    <li><a href="https://www.youtube.com/@SOUTHVILLEMONARCHS"><i class="fa-brands fa-youtube"></i></i></a></li>
                 </ul>
             </div>
         </div>
@@ -101,7 +119,59 @@
             <small>Copyright &copy; Romero & SISC</small>
         </div>
     </footer>
+    <script>
 
+        function load(){
+            $('#cardContainer').empty();
+
+            $.ajax({
+                url: 'load-reviews.php',
+                method: 'POST',
+                dataType: 'json',
+                success: function(data) {
+                    data.forEach(task => {
+                        populateCards(task);
+                    });
+                }
+            });
+        }
+
+        function populateCards(data) {
+            const cardContainer = $('#cardContainer');
+            const card = `<div class="card">
+                        <h4>${data.name}</h4>
+                        <p>${data.email}</p>
+                        <p>${data.text}</p>
+                    </div>`;
+            cardContainer.append(card);
+        }
+
+        // Send the request
+        load();
+
+        $('#loadbtn').on('click', function() {
+            load();
+        });
+
+        function insertreview(){
+            const review_name = document.getElementById("rname").value;
+            const review_email = document.getElementById("remail").value;
+            const review_text = document.getElementById("rtext").value;
+
+            const xhr = new XMLHttpRequest();
+            xhr.open('POST', 'insert-review.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+            xhr.onload = function () {
+                if (this.status == 200) {
+                    alert("Data is inserted successfully!");
+                    document.getElementById("reviewForm").reset();
+                    load();
+                }
+            };
+            xhr.send(`rname=${review_name}&remail=${review_email}&rtext=${review_text}`);
+        } 
+    </script>
     <script src="main.js"></script>
 </body>
 </html>
