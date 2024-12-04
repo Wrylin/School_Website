@@ -74,10 +74,10 @@
             <div class="contactform">
                 <form method="POST" id="msgform">
                     <h3>Send us a message!</h3>
-                    <input type="text" id="mname" name="name" placeholder="Name" class="box" >
-                    <input type="text" id="memail" name="email" placeholder="Email" class="box" >
-                    <input type="text" id="mnumber" name="number" placeholder="Phone" class="box">
-                    <textarea id="mtext" name="text" class="box" placeholder="Message" cols="30" rows="10" ></textarea>
+                    <input type="text" id="mname" name="mname" placeholder="Name" class="box" required>
+                    <input type="text" id="memail" name="memail" placeholder="Email" class="box" required>
+                    <input type="float" id="mnumber" name="mnumber" placeholder="Phone" class="box" required>
+                    <textarea id="mtext" name="mtext" class="box" placeholder="Message" cols="30" rows="10" required></textarea>
                     <button type="button" onclick="insertmsg()" class="btn">Send</button>
                 </form>
     
@@ -127,17 +127,6 @@
         </div>
     </footer>
     <script>
-        // function load(){
-        //     $.ajax({
-        //         url: 'insert-msg.php',
-        //         method: 'POST',
-        //         dataType: 'json'
-        //     });
-        // }
-
-        // // Send the request
-        // load();
-
         function insertmsg(){
             const contact_name = document.getElementById("mname").value;
             const contact_email = document.getElementById("memail").value;
@@ -150,10 +139,20 @@
 
             xhr.onload = function () {
                 if (this.status == 200) {
-                    alert("Data is inserted successfully!");
-                    document.getElementById("msgform").reset();
-                    //load();
+                    // Assuming the server returns a success message
+                    const response = this.responseText;
+                    if (response === "success") {
+                        alert("Message has been sent successfully!");
+                        document.getElementById("msgform").reset(); // Reset the form
+                    } else {
+                        alert("Error: " + response); // Handle error response
+                    }
+                } else {
+                    alert("Request failed. Status: " + this.status);
                 }
+            };
+            xhr.onerror = function () {
+                alert("Request failed due to a network error.");
             };
             xhr.send(`mname=${contact_name}&memail=${contact_email}&mnumber=${contact_no}&mtext=${contact_msg}`);
         } 

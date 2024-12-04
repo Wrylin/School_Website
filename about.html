@@ -77,7 +77,7 @@
                 </div>
                 <div class="review_right">
                     <div id="cardContainer"></div>
-                    <!-- <center><button id="loadbtn" class="btn">Load More</button></center> -->
+                    <center><button type="button" id="loadbtn" class="btn" onclick="fetchCards()">Load More</button></center>
                 </div>
             </div>
         </section>
@@ -120,18 +120,33 @@
         </div>
     </footer>
     <script>
+        let cardCount = 0; 
+        const showcards = 3; 
 
-        function load(){
+        function load() {
             $('#cardContainer').empty();
+            cardCount = 0; 
+            fetchCards(); 
+        }
 
+        function fetchCards() {
             $.ajax({
                 url: 'load-reviews.php',
                 method: 'POST',
+                data: { offset: cardCount }, 
                 dataType: 'json',
                 success: function(data) {
-                    data.forEach(task => {
-                        populateCards(task);
-                    });
+                    console.log(data);
+                    for (let i = 0; i < data.length; i++) {
+                        populateCards(data[i]);
+                    }
+                    cardCount += data.length; 
+
+                    if (data.length < showcards) {
+                        $('#loadbtn').hide(); 
+                    } else {
+                        $('#loadbtn').show();
+                    }
                 }
             });
         }
@@ -139,19 +154,15 @@
         function populateCards(data) {
             const cardContainer = $('#cardContainer');
             const card = `<div class="card">
-                        <h4>${data.name}</h4>
-                        <p>${data.email}</p>
-                        <p>${data.text}</p>
-                    </div>`;
+                            <h4>${data.name}</h4>
+                            <p>${data.email}</p>
+                            <p>${data.text}</p>
+                        </div>`;
             cardContainer.append(card);
         }
 
-        // Send the request
+        // Load initial cards on page load
         load();
-
-        // $('#loadbtn').on('click', function() {
-        //     load();
-        // });
 
         function insertreview(){
             const review_name = document.getElementById("rname").value;

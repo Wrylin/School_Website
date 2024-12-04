@@ -2,7 +2,6 @@
     include 'connect.php';
     if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try{
-            //Your SQL query here
             $name = $_POST["rname"];
             $email = $_POST["remail"];
             $text = $_POST["rtext"];
